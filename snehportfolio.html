@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sneh Patel — Computer Science graduate and full-stack .NET developer. Explore projects, skills, and experience." />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Sneh Patel | Software Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #090e1b;
+      --surface: #111a2c;
+      --surface2: #162138;
+      --text: #f0f5ff;
+      --muted: #a0aec4;
+      --line: #26334b;
+      --accent: #66e0c2;
+      --blue: #8dafff;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    ::selection {
+      background: #66e0c244;
+    }
+
+    .container {
+      max-width: var(--max);
+      padding: 0 28px;
+      margin: auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #090e1be9;
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 74px;
+      gap: 20px;
+    }
+
+    .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.89rem;
+      color: var(--muted);
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--accent);
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      color: var(--text);
+      padding: 7px 12px;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 112px 0 105px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: -180px;
+      top: -280px;
+      width: 750px;
+      height: 750px;
+      background: radial-gradient(circle, #2e6b8460, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 0.7fr;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3.6rem, 7vw, 6.5rem);
+      letter-spacing: -0.07em;
+      line-height: 1.05;
+      margin: 18px 0 20px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero .subtitle {
+      font-size: clamp(1.18rem, 2.2vw, 1.55rem);
+      font-weight: 600;
+      color: #c9d9f6;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 0.94rem;
+      border: 1px solid var(--line);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #071521;
+      border-color: var(--accent);
+    }
+
+    .btn-secondary {
+      background: #ffffff0a;
+    }
+
+    .avatar {
+      width: min(100%, 270px);
+      aspect-ratio: 1;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #203b56, #16223b 55%, #1c574f);
+      border: 1px solid #568d9c66;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 20px 90px #0006;
+      position: relative;
+    }
+
+    .avatar::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid #ffffff18;
+      border-radius: 20px;
+    }
+
+    .avatar span {
+      font: 700 5.4rem 'Space Grotesk', sans-serif;
+      letter-spacing: -0.09em;
+      color: #c8fff0;
+    }
+
+    section {
+      padding: 84px 0;
+    }
+
+    .section-header {
+      margin-bottom: 34px;
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .section-header h2 {
+      font: 700 clamp(2rem, 4vw, 2.8rem) 'Space Grotesk', sans-serif;
+      letter-spacing: -0.045em;
+      margin: 9px 0 10px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0;
+    }
+
+    .about {
+      background: #0d1424;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 24px;
+    }
+
+    .panel,
+    .project,
+    .experience {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 29px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .facts {
+      display: grid;
+      gap: 18px;
+    }
+
+    .fact-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .fact-value {
+      font-weight: 600;
+      margin-top: 3px;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .skill-card h3 {
+      font: 700 1.05rem 'Space Grotesk', sans-serif;
+      margin: 0 0 18px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .tag {
+      border: 1px solid #39506a;
+      background: #1b2b41;
+      color: #d3e5ff;
+      padding: 5px 10px;
+      border-radius: 7px;
+      font-size: 0.82rem;
+    }
+
+    .experience .top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .experience h3,
+    .project h3 {
+      font: 700 1.3rem 'Space Grotesk', sans-serif;
+      letter-spacing: -0.025em;
+      margin: 0 0 4px;
+    }
+
+    .company {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .date {
+      font-size: 0.85rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .experience ul {
+      color: var(--muted);
+      padding-left: 19px;
+      margin: 18px 0 0;
+    }
+
+    .experience li {
+      margin: 7px 0;
+    }
+
+    .projects {
+      background: #0d1424;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .project-number {
+      color: var(--accent);
+      font: 700 0.85rem 'Space Grotesk', sans-serif;
+      letter-spacing: 0.1em;
+    }
+
+    .project p {
+      color: var(--muted);
+      margin: 0;
+      flex: 1;
+    }
+
+    .project .tags {
+      margin-top: 3px;
+    }
+
+    .contact-panel {
+      background: linear-gradient(125deg, #14263c, #112b35);
+      border: 1px solid #3a6269;
+      border-radius: 20px;
+      padding: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .contact-panel h3 {
+      font: 700 1.75rem 'Space Grotesk', sans-serif;
+      margin: 0 0 8px;
+    }
+
+    .contact-panel p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .avatar {
+        display: none;
+      }
+
+      .skill-grid,
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 90px 0 85px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 74px;
+        left: 0;
+        right: 0;
+        background: #0d1424;
+        border-bottom: 1px solid var(--line);
+        padding: 18px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .skill-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 3.7rem;
+      }
+
+      .hero {
+        padding: 76px 0;
+      }
+
+      .contact-panel {
+        padding: 30px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+
+      .experience .top {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .btn {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="Sneh Patel home">sneh<span>.</span>dev</a>
+      <button class="menu-btn" type="button" aria-controls="nav-links" aria-expanded="false">Menu ☰</button>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Software developer · Chicago, IL</div>
+          <h1>Hi, I'm<br /><span>Sneh Patel.</span></h1>
+          <div class="subtitle">Full-Stack .NET Developer &amp; Computer Science Graduate</div>
+          <p>
+            I build applications that connect thoughtful user experiences with reliable backend systems. I enjoy working across C#, .NET, Angular, React, and SQL—and turning ideas into working software.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#projects">Explore My Projects ↗</a>
+            <a class="btn btn-secondary" href="#contact">Get in Touch →</a>
+          </div>
+        </div>
+        <div class="avatar" aria-hidden="true"><span>SP</span></div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">01 / About</div>
+          <h2>A little about me</h2>
+        </div>
+        <div class="about-grid">
+          <div class="panel">
+            <p>I'm a Computer Science graduate from the University of Illinois Chicago who enjoys building things, solving problems, and understanding how technology works.</p>
+            <p>My experience spans full-stack web applications, backend services, and database-driven systems. Through my .NET training at Revature, I've been working with ASP.NET Core, Angular, Entity Framework Core, and SQL Server.</p>
+            <p>Outside of coding, I enjoy spending time with friends and family, riding my motorcycle, and exploring new interests. I'm excited to keep learning and growing as a developer.</p>
+          </div>
+          <div class="panel facts">
+            <div>
+              <div class="fact-label">Education</div>
+              <div class="fact-value">B.S. Computer Science</div>
+              <div>University of Illinois Chicago &middot; May 2026</div>
+            </div>
+            <div>
+              <div class="fact-label">Current focus</div>
+              <div class="fact-value">Full-stack .NET development</div>
+            </div>
+            <div>
+              <div class="fact-label">Interests</div>
+              <div class="fact-value">Backend engineering &middot; Financial technology &middot; Web applications</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">02 / Skills</div>
+          <h2>Tools I work with</h2>
+          <p>Languages, frameworks, and engineering concepts I've used in projects and training.</p>
+        </div>
+        <div class="skill-grid">
+          <div class="skill-card">
+            <h3>Languages</h3>
+            <div class="tags">
+              <span class="tag">C#</span>
+              <span class="tag">Java</span>
+              <span class="tag">Python</span>
+              <span class="tag">C++</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">SQL</span>
+              <span class="tag">HTML / CSS</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Frontend &amp; Backend</h3>
+            <div class="tags">
+              <span class="tag">ASP.NET Core</span>
+              <span class="tag">Angular</span>
+              <span class="tag">React</span>
+              <span class="tag">Flask</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Entity Framework Core</span>
+              <span class="tag">LINQ</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Databases &amp; Tools</h3>
+            <div class="tags">
+              <span class="tag">SQL Server</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">Git / GitHub</span>
+              <span class="tag">Visual Studio</span>
+              <span class="tag">VS Code</span>
+              <span class="tag">Swagger</span>
+              <span class="tag">Agile / Scrum</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">03 / Experience</div>
+          <h2>What I've been working on</h2>
+        </div>
+        <article class="experience">
+          <div class="top">
+            <div>
+              <h3>Full Stack .NET Developer Trainee</h3>
+              <div class="company">Revature &middot; Remote</div>
+            </div>
+            <div class="date">Aug 2026 &ndash; Present</div>
+          </div>
+          <ul>
+            <li>Developing full-stack applications using C#, ASP.NET Core, Angular, TypeScript, and SQL Server.</li>
+            <li>Building RESTful APIs and implementing authentication, validation, dependency injection, and CRUD operations.</li>
+            <li>Using Entity Framework Core, LINQ, and relational database design to support application data and business logic.</li>
+            <li>Practicing object-oriented design, debugging, Git workflows, and Agile development.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">04 / Projects</div>
+          <h2>Selected work</h2>
+          <p>A few projects that reflect my interest in full-stack engineering, backend systems, and financial applications.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project">
+            <div class="project-number">PROJECT 01 &middot; OCT 2026</div>
+            <h3>Financial Portfolio Management Dashboard</h3>
+            <p>An in-progress full-stack financial dashboard for viewing account balances, investment holdings, transactions, and portfolio activity, with an Angular frontend and ASP.NET Core API.</p>
+            <div class="tags">
+              <span class="tag">Angular</span>
+              <span class="tag">C#</span>
+              <span class="tag">ASP.NET Core</span>
+              <span class="tag">EF Core</span>
+              <span class="tag">SQL Server</span>
+            </div>
+          </article>
+          <article class="project">
+            <div class="project-number">PROJECT 02 &middot; SEP 2026</div>
+            <h3>Banking Management Application</h3>
+            <p>A C# banking application with customer and admin workflows, account management, deposits, withdrawals, transfers, transaction history, and business-rule validation.</p>
+            <div class="tags">
+              <span class="tag">C#</span>
+              <span class="tag">.NET 10</span>
+              <span class="tag">EF Core</span>
+              <span class="tag">LINQ</span>
+              <span class="tag">SQL Server</span>
+            </div>
+          </article>
+          <article class="project">
+            <div class="project-number">PROJECT 03 &middot; 2026</div>
+            <h3>Flick Finder</h3>
+            <p>A full-stack movie discovery application featuring movie search, genre filtering, and detail pages. Built with React and a Flask API backed by SQLite.</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Python</span>
+              <span class="tag">Flask</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">Pandas</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="kicker">05 / Contact</div>
+          <h2>Let's connect</h2>
+        </div>
+        <div class="contact-panel">
+          <div>
+            <h3>Have an opportunity in mind?</h3>
+            <p>I'm interested in software engineering opportunities and would love to connect.</p>
+          </div>
+          <a class="btn btn-primary" href="mailto:snehypatel30@gmail.com">Email Me &#8599;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>&copy; <span id="year">2026</span> Sneh Patel. Built with HTML, CSS &amp; JavaScript.</span>
+      <div class="footer-links">
+        <a href="mailto:snehypatel30@gmail.com">Email</a>
+        <a href="https://app.revature.com/viewportfolio/Sneh1" target="_blank" rel="noopener noreferrer">Revature Portfolio &#8599;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const menu = document.querySelector('.menu-btn');
+    const links = document.querySelector('.nav-links');
+
+    menu.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      menu.setAttribute('aria-expanded', String(open));
+    });
+
+    links.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        links.classList.remove('open');
+        menu.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
